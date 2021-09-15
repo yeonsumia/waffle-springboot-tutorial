@@ -1,1 +1,1 @@
-mysql -u root < ../sql/init-db.sql
+mysql -u root -p < ../sql/init-db.sql

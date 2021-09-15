@@ -1,6 +1,7 @@
 package com.wafflestudio.seminar.domain.survey.model
 
 import com.wafflestudio.seminar.domain.os.model.OperatingSystem
+import com.wafflestudio.seminar.domain.user.model.UserResponse
 import java.time.LocalDateTime
 import javax.persistence.*
 import javax.validation.constraints.Max
@@ -15,6 +16,10 @@ class SurveyResponse(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
 
+    @ManyToOne(cascade=[CascadeType.ALL])
+    @JoinColumn(name="user_id", referencedColumnName = "id")
+    var user: UserResponse? = null,
+
     @ManyToOne
     @JoinColumn(name = "os_id", referencedColumnName = "id")
     @NotNull
@@ -22,19 +27,19 @@ class SurveyResponse(
 
     @Column(name = "spring_exp")
     @NotNull
-    @Min(0, message = "The value must be between 1 and 5")
+    @Min(1, message = "The value must be between 1 and 5")
     @Max(5, message = "The value must be between 1 and 5")
     var springExp: Int? = null,
 
     @Column(name = "rdb_exp")
     @NotNull
-    @Min(0, message = "The value must be between 1 and 5")
+    @Min(1, message = "The value must be between 1 and 5")
     @Max(5, message = "The value must be between 1 and 5")
     var rdbExp: Int? = null,
 
     @Column(name = "programming_exp")
     @NotNull
-    @Min(0, message = "The value must be between 1 and 5")
+    @Min(1, message = "The value must be between 1 and 5")
     @Max(5, message = "The value must be between 1 and 5")
     var programmingExp: Int? = null,
 
@@ -46,6 +51,7 @@ class SurveyResponse(
 
     @Column(name = "backend_reason")
     var backendReason: String? = null,
+
     @Column(name = "waffle_reason")
     var waffleReason: String? = null,
 
@@ -54,4 +60,6 @@ class SurveyResponse(
 
     @NotNull
     var timestamp: LocalDateTime = LocalDateTime.now(),
+
+
 )
