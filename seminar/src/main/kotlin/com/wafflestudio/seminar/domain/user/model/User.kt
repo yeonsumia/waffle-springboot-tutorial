@@ -22,36 +22,4 @@ class User(
     @field:NotNull
     val roles: String = "",
 
-    @OneToOne
-    @JoinColumn(name="participant_id" referencedColumnName = "id")
-    @field:NotNull
-    val participantProfile: ParticipantProfile,
-
-    @OneToOne
-    @JoinColumn(name="instructor_id" referencedColumnName = "id")
-    @field:NotNull
-    val instructorProfile: InstructorProfile,
-
     ) : BaseEntity()
-
-@Entity
-class ParticipantProfile (
-
-        @field:NotNull
-        val createdAt: LocalDateTime = LocalDateTime.now(),
-
-        @field:NotNull
-        val updatedAt: LocalDateTime = LocalDateTime.now(),
-
-        ) : BaseEntity()
-
-@Entity
-class InstructorProfile (
-
-        @field:NotNull
-        val createdAt: LocalDateTime = LocalDateTime.now(),
-
-        @field:NotNull
-        val updatedAt: LocalDateTime = LocalDateTime.now(),
-
-        ) : BaseEntity()
