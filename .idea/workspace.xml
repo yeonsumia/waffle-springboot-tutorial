@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="993902e7-eb8d-4b7a-868d-ef26501e44af" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seminar/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/seminar/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seminar/scripts/bash/init-db.sh" beforeDir="false" afterPath="$PROJECT_DIR$/seminar/scripts/bash/init-db.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seminar/src/main/kotlin/com/wafflestudio/seminar/DataLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/seminar/src/main/kotlin/com/wafflestudio/seminar/DataLoader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seminar/src/main/kotlin/com/wafflestudio/seminar/domain/user/model/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/seminar/src/main/kotlin/com/wafflestudio/seminar/domain/user/model/User.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1xhELNXxol9R4SNHiXnCCUhLgyC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seminar/src/main/kotlin/com/wafflestudio/seminar/domain" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="advanced.settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/seminar/src/main/kotlin/com/wafflestudio/seminar/domain" />
+      <recent name="$PROJECT_DIR$/seminar/src/main/kotlin/com/wafflestudio/seminar/domain/user" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="993902e7-eb8d-4b7a-868d-ef26501e44af" name="Changes" comment="" />
+      <created>1630798862459</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1630798862459</updated>
+      <workItem from="1630798864765" duration="24444000" />
+      <workItem from="1630928014986" duration="1199000" />
+      <workItem from="1630929219566" duration="34173000" />
+      <workItem from="1631032273418" duration="831000" />
+      <workItem from="1631342119059" duration="1801000" />
+      <workItem from="1631582744974" duration="12981000" />
+      <workItem from="1632138138893" duration="245000" />
+      <workItem from="1632139374333" duration="1599000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
