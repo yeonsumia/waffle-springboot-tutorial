@@ -1,4 +1,7 @@
 spring:
+  config:
+    activate:
+      on-profile: local
   datasource:
     url: jdbc:mysql://localhost:3306/seminar?serverTimezone=UTC
     username: waffle-spring
@@ -14,7 +17,7 @@ spring:
       # update: 시작 시 자동 migrate
       # none: db 그대로
       # create-drop: 시작 시 테이블 create, 종료 시 drop
-
+      show-sql: true
 app:
   jwt:
     jwt-secret-key: wafflestudio
