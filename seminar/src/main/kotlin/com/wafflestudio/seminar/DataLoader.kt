@@ -30,7 +30,7 @@ class DataLoader(
         operatingSystemRepository.save(macos)
         operatingSystemRepository.save(linux)
 
-        BufferedReader(FileReader(ClassPathResource("data/example_surveyresult.tsv").file)).use { br ->
+        BufferedReader(FileReader(ClassPathResource("data/example_surveyresult.tsv").getInputStream())).use { br ->
             br.lines().forEach {
                 val rawSurveyResponse = it.split("\t")
                 val newSurveyResponse = SurveyResponse(
