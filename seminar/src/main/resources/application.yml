@@ -1,4 +1,13 @@
 spring:
+  profiles:
+    active: local
+app:
+  jwt:
+    jwt-secret-key: wafflestudio
+    jwt-expiration-in-ms: 10800000
+---
+
+spring:
   config:
     activate:
       on-profile: local
@@ -19,6 +28,7 @@ spring:
       # create-drop: 시작 시 테이블 create, 종료 시 drop
       show-sql: true
 ---
+
 spring:
   config:
     activate:
@@ -40,8 +50,4 @@ spring:
       # none: db 그대로
       # create-drop: 시작 시 테이블 create, 종료 시 drop
       show-sql: true
-app:
-  jwt:
-    jwt-secret-key: wafflestudio
-    jwt-expiration-in-ms: 10800000
 
