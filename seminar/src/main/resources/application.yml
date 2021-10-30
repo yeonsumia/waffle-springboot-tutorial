@@ -6,6 +6,7 @@ spring:
     url: jdbc:mysql://database-hw.crdo3pgpl3st.ap-northeast-2.rds.amazonaws.com:3306/seminar?serverTimezone=UTC
     username: waffle-spring
     password: wafflestudio
+    driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
       mode: always
