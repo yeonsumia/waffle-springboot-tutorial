@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:mysql://localhost:3306/seminar?serverTimezone=UTC
+    url: jdbc:mysql://database-hw.crdo3pgpl3st.ap-northeast-2.rds.amazonaws.com:3306/seminar?serverTimezone=UTC
     username: waffle-spring
     password: wafflestudio
   sql:
