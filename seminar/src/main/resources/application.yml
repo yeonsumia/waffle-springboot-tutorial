@@ -38,9 +38,6 @@ spring:
     username: waffle-spring
     password: wafflestudio
     driver-class-name: com.mysql.cj.jdbc.Driver
-  sql:
-    init:
-      mode: always
   jpa:
     generate-ddl: true
     hibernate:
