@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonFormat
 import com.wafflestudio.seminar.domain.user.dto.InstructorDto
 import com.wafflestudio.seminar.domain.user.dto.ParticipantDto
 import com.wafflestudio.seminar.domain.user.repository.UserRepository
+import com.wafflestudio.seminar.domain.seminar.repository.SeminarParticipantRepository
 class SeminarDto {
     data class Response(
             val id: Long,
@@ -31,21 +32,17 @@ class SeminarDto {
                 time = seminar.time,
                 online = seminar.online,
                 instructors = seminar.instructors.map { it -> InstructorDto.Response(userRepository.findUserByEmail(it.user!!.email)) },
-                participants = seminar.participants.map { it -> ParticipantDto.Response(userRepository.findUserByEmail(it.participantProfile.user!!.email)) }
+                participants = seminar.participants.map { it -> ParticipantDto.Response(userRepository.findUserByEmail(it.participantProfile.user!!.email), it.participantProfile.findSeminarParticipantBySeminar(seminar)) }
         )
     }
 
     data class SeminarRequest(
-            @field:NotBlank
             val name: String,
 
-            @field:Positive
             val capacity: Long,
 
-            @field:Positive
             val count: Long,
 
-            @field:JsonFormat(pattern="HH:mm")
             val time: String,
 
             val online: String,

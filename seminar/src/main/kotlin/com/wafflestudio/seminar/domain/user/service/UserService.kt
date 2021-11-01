@@ -15,7 +15,7 @@ import com.wafflestudio.seminar.domain.user.model.ParticipantProfile
 import com.wafflestudio.seminar.domain.user.repository.InstructorRepository
 import com.wafflestudio.seminar.domain.user.model.InstructorProfile
 import com.wafflestudio.seminar.domain.user.dto.ParticipantDto
-
+import java.time.LocalDateTime
 @Service
 class UserService(
     private val userRepository: UserRepository,
@@ -35,7 +35,8 @@ class UserService(
         var year = signupRequest.year
         var university = signupRequest.university
         var accepted = signupRequest.accepted
-
+        participant = null
+        instructor = null
         if (roles.equals("instructor")) {
             if (year != null && !(year > 0)) throw YearTypeException("Year should be a number that bigger than 0.")
             if(company == null) company = ""
@@ -80,6 +81,7 @@ class UserService(
             if(company == null) company = ""
             user.instructorProfile?.company = company
             user.instructorProfile?.year = year
+            user.instructorProfile?.updatedAt = LocalDateTime.now()
         }
         else if (roles.equals("participant")) {
             if(university == null) university = ""
@@ -87,6 +89,7 @@ class UserService(
             val boolean_accepted = accepted.lowercase().toBoolean()
             user.participantProfile?.university = university
             user.participantProfile?.accepted = boolean_accepted
+            user.participantProfile?.updatedAt = LocalDateTime.now()
         }
         else if (roles.indexOf(',') != -1) {
             val rolesSet = roles.split(",").toSet()
@@ -100,6 +103,8 @@ class UserService(
                 user.instructorProfile?.company = company
                 user.instructorProfile?.year = year
                 user.participantProfile?.accepted = boolean_accepted
+                user.instructorProfile?.updatedAt = LocalDateTime.now()
+                user.participantProfile?.updatedAt = LocalDateTime.now()
             }
         } else throw RoleTypeException("Role should be participant or instructor.")
 

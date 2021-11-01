@@ -25,11 +25,11 @@ class User(
     @field:NotNull
     var roles: String = "",
 
-    @OneToOne(cascade=[CascadeType.ALL])
+    @OneToOne(cascade=[CascadeType.MERGE])
     @JoinColumn(name="participant_id", referencedColumnName = "id")
     var participantProfile: ParticipantProfile? = null,
 
-    @OneToOne(cascade=[CascadeType.ALL])
+    @OneToOne(cascade=[CascadeType.MERGE])
     @JoinColumn(name="instructor_id", referencedColumnName = "id")
     var instructorProfile: InstructorProfile? = null,
 

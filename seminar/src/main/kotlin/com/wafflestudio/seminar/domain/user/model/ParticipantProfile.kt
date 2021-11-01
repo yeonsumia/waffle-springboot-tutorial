@@ -28,4 +28,7 @@ class ParticipantProfile (
         fun joinSeminar(seminarParticipant: SeminarParticipant) {
             seminars.add(seminarParticipant)
         }
+        fun findSeminarParticipantBySeminar(seminar: Seminar) : SeminarParticipant {
+            return seminars.find { it -> it.seminar == seminar }!!;
+        }
     }

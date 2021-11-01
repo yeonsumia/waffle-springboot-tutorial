@@ -30,8 +30,8 @@ class SeminarService (
         val capacity = seminarRequest.capacity
         val count = seminarRequest.count
         val time = seminarRequest.time
-        val online = seminarRequest.online
-
+        var online = seminarRequest.online
+        if(online == null) online = "true"
         checkSeminarRequestForm(time, name, count, capacity, online)
         val booleanOnline = online.lowercase().toBoolean()
 
@@ -54,8 +54,8 @@ class SeminarService (
         val capacity = seminarRequest.capacity
         val count = seminarRequest.count
         val time = seminarRequest.time
-        val online = seminarRequest.online
-
+        var online = seminarRequest.online
+        if(online == null) online = "true"
         if(capacity < seminar.participants.filter { it.isActive }.size.toLong()) throw RequestInvalidFormException("Capacity should be bigger than the number of active users.")
 
         checkSeminarRequestForm(time, name, count, capacity, online)
@@ -66,8 +66,9 @@ class SeminarService (
         seminar.count = count
         seminar.time = time
         seminar.online = booleanOnline
+        seminar.updatedAt = LocalDateTime.now()
 
-        return seminarRepository.findSeminarById(id)!!
+        return seminarRepository.save(seminar)
     }
 
     private fun checkSeminarRequestForm(time: String, name: String, count: Long, capacity: Long, online: String) {
