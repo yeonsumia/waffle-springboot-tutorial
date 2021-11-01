@@ -45,7 +45,7 @@ class SeminarDto {
 
             val time: String,
 
-            val online: String,
+            val online: String?,
 
             )
 
