@@ -12,6 +12,8 @@ import com.wafflestudio.seminar.domain.user.dto.InstructorDto
 import com.wafflestudio.seminar.domain.user.dto.ParticipantDto
 import com.wafflestudio.seminar.domain.user.repository.UserRepository
 import com.wafflestudio.seminar.domain.seminar.repository.SeminarParticipantRepository
+import com.wafflestudio.seminar.domain.user.dto.InstructorProfileDto
+
 class SeminarDto {
     data class Response(
             val id: Long,
@@ -24,15 +26,15 @@ class SeminarDto {
             val participants: List<ParticipantDto.Response>
 
     ) {
-        constructor(seminar: Seminar, userRepository: UserRepository) : this(
+        constructor(seminar: Seminar) : this(
                 id = seminar.id,
                 name = seminar.name,
                 capacity = seminar.capacity,
                 count = seminar.count,
                 time = seminar.time,
                 online = seminar.online,
-                instructors = seminar.instructors.map { it -> InstructorDto.Response(userRepository.findUserByEmail(it.user!!.email)) },
-                participants = seminar.participants.map { it -> ParticipantDto.Response(userRepository.findUserByEmail(it.participantProfile.user!!.email), it.participantProfile.findSeminarParticipantBySeminar(seminar)) }
+                instructors = seminar.instructors.map { InstructorDto.Response(it.user!!) },
+                participants = seminar.participants.map { ParticipantDto.Response(it.participantProfile.user!!, it.participantProfile.findSeminarParticipantBySeminar(seminar)) }
         )
     }
 

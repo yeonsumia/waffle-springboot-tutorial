@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull
 import com.wafflestudio.seminar.domain.user.model.User
 import com.wafflestudio.seminar.domain.seminar.model.Seminar
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonProperty
 
 
 @Entity
@@ -17,13 +18,13 @@ class InstructorProfile (
     @Column
     var year: Long? = null,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE])
     @JoinColumn(name="seminar_id", referencedColumnName = "id")
     var seminar: Seminar? = null,
 
     @JsonIgnore
-    @OneToOne(mappedBy = "instructorProfile")
-    val user: User? = null,
+    @OneToOne(mappedBy = "instructorProfile", cascade = [CascadeType.MERGE])
+    var user: User? = null,
 
     @JsonIgnore
     @ManyToOne

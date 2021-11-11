@@ -21,8 +21,8 @@ class ParticipantProfile (
     val seminars: MutableList<SeminarParticipant> = mutableListOf(),
 
     @JsonIgnore
-    @OneToOne(mappedBy = "participantProfile")
-    val user: User? = null,
+    @OneToOne(mappedBy = "participantProfile", cascade = [CascadeType.MERGE])
+    var user: User? = null,
 
     ) : BaseTimeEntity() {
         fun joinSeminar(seminarParticipant: SeminarParticipant) {

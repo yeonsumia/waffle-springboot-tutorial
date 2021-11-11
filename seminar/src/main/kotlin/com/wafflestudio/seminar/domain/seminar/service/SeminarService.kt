@@ -47,8 +47,8 @@ class SeminarService (
     fun modifySeminar(id: Long, seminarRequest: SeminarDto.SeminarRequest?, user: User) : Seminar {
         val seminar = seminarRepository.findSeminarById(id)
         if(seminar == null) throw SeminarNotFoundException("Seminar is not found.")
-        if(!user.roles.contains("instructor") || seminar.mainInstructors.indexOf(user.instructorProfile) != -1) throw UserNotAllowedException("User is cannot modify seminar info.")
-        if(seminarRequest == null) return seminar;
+        if(seminarRequest == null || seminarRequest.toString() == "SeminarRequest()") return seminar
+        if(!user.roles.contains("instructor") || seminar.mainInstructors.indexOf(user.instructorProfile) == -1) throw UserNotAllowedException("Only main instructor can modify seminar info.")
 
         val name = seminarRequest.name
         val capacity = seminarRequest.capacity

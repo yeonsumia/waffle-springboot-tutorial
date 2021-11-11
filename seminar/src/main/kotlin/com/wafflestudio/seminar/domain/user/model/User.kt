@@ -13,7 +13,7 @@ import com.wafflestudio.seminar.domain.user.model.InstructorProfile
 class User(
     @Column(unique = true)
     @field:NotBlank
-    val email: String,
+    var email: String,
 
     @field:NotBlank
     var name: String,

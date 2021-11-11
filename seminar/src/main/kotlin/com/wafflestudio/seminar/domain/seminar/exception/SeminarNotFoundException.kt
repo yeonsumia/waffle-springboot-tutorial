@@ -1,6 +1,6 @@
 package com.wafflestudio.seminar.domain.seminar.exception
 
-import com.wafflestudio.seminar.global.common.exception. DataNotFoundException
+import com.wafflestudio.seminar.global.common.exception.DataNotFoundException
 import com.wafflestudio.seminar.global.common.exception.ErrorType
 
 
