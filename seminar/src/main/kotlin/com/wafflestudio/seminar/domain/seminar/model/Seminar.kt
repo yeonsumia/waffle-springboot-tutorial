@@ -38,15 +38,15 @@ class Seminar(
 
 
 ) : BaseTimeEntity() {
-    public fun addInstructor(instructorProfile: InstructorProfile) {
+    fun addInstructor(instructorProfile: InstructorProfile) {
         instructors.add(instructorProfile)
     }
 
-    public fun addMainInstructor(instructorProfile: InstructorProfile) {
+    fun addMainInstructor(instructorProfile: InstructorProfile) {
         mainInstructors.add(instructorProfile)
     }
 
-    public fun addParticipant(seminarParticipant: SeminarParticipant) {
+    fun addParticipant(seminarParticipant: SeminarParticipant) {
         participants.add(seminarParticipant)
     }
 
