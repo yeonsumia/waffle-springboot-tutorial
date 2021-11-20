@@ -30,8 +30,8 @@ class SeminarService (
         val capacity = seminarRequest.capacity
         val count = seminarRequest.count
         val time = seminarRequest.time
-        val online = seminarRequest.online
-
+        var online = seminarRequest.online
+        if(online == null) online = "true"
         checkSeminarRequestForm(time, name, count, capacity, online)
         val booleanOnline = online.lowercase().toBoolean()
 
@@ -47,15 +47,15 @@ class SeminarService (
     fun modifySeminar(id: Long, seminarRequest: SeminarDto.SeminarRequest?, user: User) : Seminar {
         val seminar = seminarRepository.findSeminarById(id)
         if(seminar == null) throw SeminarNotFoundException("Seminar is not found.")
-        if(!user.roles.contains("instructor") || seminar.mainInstructors.indexOf(user.instructorProfile) != -1) throw UserNotAllowedException("User is cannot modify seminar info.")
-        if(seminarRequest == null) return seminar;
+        if(seminarRequest == null || seminarRequest.toString() == "SeminarRequest()") return seminar
+        if(!user.roles.contains("instructor") || seminar.mainInstructors.indexOf(user.instructorProfile) == -1) throw UserNotAllowedException("Only main instructor can modify seminar info.")
 
         val name = seminarRequest.name
         val capacity = seminarRequest.capacity
         val count = seminarRequest.count
         val time = seminarRequest.time
-        val online = seminarRequest.online
-
+        var online = seminarRequest.online
+        if(online == null) online = "true"
         if(capacity < seminar.participants.filter { it.isActive }.size.toLong()) throw RequestInvalidFormException("Capacity should be bigger than the number of active users.")
 
         checkSeminarRequestForm(time, name, count, capacity, online)
@@ -66,8 +66,9 @@ class SeminarService (
         seminar.count = count
         seminar.time = time
         seminar.online = booleanOnline
+        seminar.updatedAt = LocalDateTime.now()
 
-        return seminarRepository.findSeminarById(id)!!
+        return seminarRepository.save(seminar)
     }
 
     private fun checkSeminarRequestForm(time: String, name: String, count: Long, capacity: Long, online: String) {

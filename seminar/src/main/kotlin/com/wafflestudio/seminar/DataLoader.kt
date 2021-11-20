@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource
 import org.springframework.stereotype.Component
 import java.io.BufferedReader
 import java.io.FileReader
+import java.io.InputStreamReader
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -30,7 +31,7 @@ class DataLoader(
         operatingSystemRepository.save(macos)
         operatingSystemRepository.save(linux)
 
-        BufferedReader(FileReader(ClassPathResource("data/example_surveyresult.tsv").file)).use { br ->
+        BufferedReader(InputStreamReader(ClassPathResource("data/example_surveyresult.tsv").inputStream)).use { br ->
             br.lines().forEach {
                 val rawSurveyResponse = it.split("\t")
                 val newSurveyResponse = SurveyResponse(

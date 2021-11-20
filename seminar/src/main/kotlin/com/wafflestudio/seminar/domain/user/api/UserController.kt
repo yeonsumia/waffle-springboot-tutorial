@@ -28,7 +28,7 @@ class UserController(
         return ResponseEntity.ok(UserDto.Response(user))
     }
 
-    @PutMapping("/users/me/")
+    @PutMapping("/user/me/")
     fun putCurrentUser(@Valid @RequestBody putRequest: UserDto.PutRequest, @CurrentUser user: User): ResponseEntity<UserDto.Response> {
         val modified_user = userService.modifyUser(putRequest, user)
         return ResponseEntity.ok(UserDto.Response(modified_user))
@@ -38,5 +38,11 @@ class UserController(
     fun beParticipant(@Valid @RequestBody participantRequest: ParticipantDto.ParticipantRequest, @CurrentUser user: User): ResponseEntity<UserDto.Response> {
         val modified_user = userService.beParticipant(participantRequest, user)
         return ResponseEntity(UserDto.Response(modified_user), HttpStatus.CREATED)
+    }
+
+    @GetMapping("/users/{id}/")
+    fun getUser(@PathVariable("id") id: Long): ResponseEntity<UserDto.Response> {
+        val user = userService.getUserById(id)
+        return ResponseEntity.ok(UserDto.Response(user))
     }
 }

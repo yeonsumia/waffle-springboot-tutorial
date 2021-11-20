@@ -16,37 +16,36 @@ import com.wafflestudio.seminar.global.common.dto.ListResponse
 @RequestMapping("/api/v1")
 class SeminarController(
         private val seminarService: SeminarService,
-        private val userRepository: UserRepository,
         private var seminarList: List<ShowSeminarDto.Response>
 ) {
     @PostMapping("/seminars/")
     fun addSeminar(@Valid @RequestBody seminarRequest: SeminarDto.SeminarRequest, @CurrentUser user: User): ResponseEntity<SeminarDto.Response> {
         val seminar = seminarService.addSeminar(seminarRequest, user)
-        return ResponseEntity(SeminarDto.Response(seminar, userRepository), HttpStatus.CREATED)
+        return ResponseEntity(SeminarDto.Response(seminar), HttpStatus.CREATED)
     }
 
     @PutMapping("/seminars/{id}/")
     fun modifySeminar(@PathVariable("id") id: Long, @Valid @RequestBody seminarRequest: SeminarDto.SeminarRequest?, @CurrentUser user: User): ResponseEntity<SeminarDto.Response> {
         val seminar = seminarService.modifySeminar(id, seminarRequest, user)
-        return ResponseEntity.ok(SeminarDto.Response(seminar, userRepository))
+        return ResponseEntity.ok(SeminarDto.Response(seminar))
     }
 
     @PostMapping("/seminars/{id}/user/")
     fun joinSeminar(@PathVariable("id") id: Long, @Valid @RequestBody joinSeminarRequest: SeminarDto.JoinSeminarRequest, @CurrentUser user: User): ResponseEntity<SeminarDto.Response> {
         val seminar = seminarService.joinSeminar(id, joinSeminarRequest, user)
-        return ResponseEntity(SeminarDto.Response(seminar, userRepository), HttpStatus.CREATED)
+        return ResponseEntity(SeminarDto.Response(seminar), HttpStatus.CREATED)
     }
 
     @DeleteMapping("/seminars/{id}/user/me/")
     fun dropSeminar(@PathVariable("id") id: Long, @CurrentUser user: User): ResponseEntity<SeminarDto.Response> {
         val seminar = seminarService.dropSeminar(id, user)
-        return ResponseEntity.ok(SeminarDto.Response(seminar, userRepository))
+        return ResponseEntity.ok(SeminarDto.Response(seminar))
     }
 
     @GetMapping("/seminar/{id}/")
     fun getSeminar(@PathVariable("id") id: Long): ResponseEntity<SeminarDto.Response> {
         val seminar = seminarService.getSeminarById(id)
-        return ResponseEntity.ok(SeminarDto.Response(seminar, userRepository))
+        return ResponseEntity.ok(SeminarDto.Response(seminar))
     }
 
     @GetMapping("/seminar/")

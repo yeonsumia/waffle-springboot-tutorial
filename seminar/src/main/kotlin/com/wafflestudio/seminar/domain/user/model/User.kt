@@ -13,7 +13,7 @@ import com.wafflestudio.seminar.domain.user.model.InstructorProfile
 class User(
     @Column(unique = true)
     @field:NotBlank
-    val email: String,
+    var email: String,
 
     @field:NotBlank
     var name: String,
@@ -25,11 +25,11 @@ class User(
     @field:NotNull
     var roles: String = "",
 
-    @OneToOne(cascade=[CascadeType.ALL])
+    @OneToOne(cascade=[CascadeType.MERGE])
     @JoinColumn(name="participant_id", referencedColumnName = "id")
     var participantProfile: ParticipantProfile? = null,
 
-    @OneToOne(cascade=[CascadeType.ALL])
+    @OneToOne(cascade=[CascadeType.MERGE])
     @JoinColumn(name="instructor_id", referencedColumnName = "id")
     var instructorProfile: InstructorProfile? = null,
 

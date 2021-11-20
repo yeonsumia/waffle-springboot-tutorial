@@ -3,6 +3,7 @@ package com.wafflestudio.seminar.domain.user.dto
 import com.wafflestudio.seminar.domain.user.model.User
 import com.wafflestudio.seminar.domain.user.dto.InstructorProfileDto
 import com.wafflestudio.seminar.domain.user.dto.ParticipantProfileDto
+import net.bytebuddy.implementation.bind.annotation.Empty
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
@@ -27,17 +28,17 @@ class UserDto {
 
     data class SignupRequest(
 
-        @field:NotBlank
-        val email: String,
+        @NotBlank
+        val email: String?,
 
-        @field:NotBlank
-        val name: String,
+        @NotBlank
+        val name: String?,
 
-        @field:NotBlank
-        val password: String,
+        @NotBlank
+        val password: String?,
 
-        @field:NotBlank
-        val roles: String,
+        @NotBlank
+        val role: String?,
 
         val university: String?,
 
@@ -51,14 +52,11 @@ class UserDto {
 
     data class PutRequest(
 
-        @field:NotBlank
-        val email: String,
+        val email: String?,
 
-        @field:NotBlank
-        val name: String,
+        val name: String?,
 
-        @field:NotBlank
-        val password: String,
+        val password: String?,
 
         val university: String?,
 
